@@ -18,7 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
         die('Connection failed: ' . mysqli_connect_error());
     }
     // Consulta vulnerable a inyección SQL
-    $query = "SELECT * FROM usuario WHERE email = '$email' AND password = '$password'";
+    $query = "SELECT * FROM usuario WHERE usr_email = '$email' AND usr_pass = '$password'";
+    /* ' or ''=' */
+    error_log("Executing query: $query");
     $result = mysqli_query($conn, $query);
     if ($result && mysqli_num_rows($result) > 0) {
         $_SESSION['email'] = $email;
