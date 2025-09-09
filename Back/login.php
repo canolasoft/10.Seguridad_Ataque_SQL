@@ -17,17 +17,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
     if (!$conn) {
         die('Connection failed: ' . mysqli_connect_error());
     }
-    /*/ Consulta segura contra inyección SQL
+    /* Consulta segura contra inyección SQL
     $stmt = $conn->prepare("SELECT * FROM usuario WHERE usr_email = ? AND usr_pass = ?");
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
     $result = $stmt->get_result();
-    */
+    /*/
 
-    // Consulta vulnerable a inyección SQL
-    $query = "SELECT * FROM usuario WHERE usr_email = '$email' AND usr_pass = '$password'"; /* ' or ''=' */
+    //* Consulta vulnerable a inyección SQL
+    $query = "SELECT * FROM usuario WHERE usr_email = '$email' AND usr_pass = '$password'";
     error_log("Executing query: $query");
     $result = mysqli_query($conn, $query);
+    //*/
 
     if ($result && mysqli_num_rows($result) > 0) {
         $_SESSION['email'] = $email;
