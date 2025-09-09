@@ -139,6 +139,7 @@ session_start();
         </em>
         </p>
         <hr>
+        <h1 class="text-center">Sitio web vulnerable</h1>
         <div class="col-12 col-lg-6 mt-4 mx-auto border p-4 rounded">
             <?php
             if (isset($_SESSION['email'])) {
@@ -153,7 +154,7 @@ session_start();
             } else {
             ?>
                 <form id="loginForm" action="Back/login.php" method="POST">
-                    <h1>Iniciar sesión</h1>
+                    <h3>Iniciar sesión</h3>
                     <?php
                     if (isset($_SESSION['mensaje'])) {
                         echo '<div class="alert alert-danger" role="alert">' . htmlspecialchars($_SESSION['mensaje']) . '</div>';
